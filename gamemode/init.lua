@@ -3,8 +3,15 @@ CM = {} -- Global Table, store functions etc. include
 CM.LoadedFiles = {}
 
 function CM.Init()
+	hook.Call("PreInit") -- Called before the gamemode starts loading
 	CM.LoadBaseFiles() -- Load base files, e.g. cl_init, shared, anything in the main dir
 
+	CM.PostInit()
+end
+
+function CM.PostInit()
+
+	hook.Call("PostInit") -- Allows you to attach hooks to the event e.g. hook.Add("PostInit", "testing", function)
 end
 
 function CM.includeDir(root,dir)
