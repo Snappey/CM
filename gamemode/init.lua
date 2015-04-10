@@ -4,7 +4,7 @@ CM.LoadedFiles = {}
 
 function CM.Init()
 	hook.Call("PreInit") -- Called before the gamemode starts loading
-	CM.LoadBaseFiles() -- Load base files, e.g. cl_init, shared, anything in the main dir
+	CM.LoadBaseFiles("init.lua") -- Load base files, e.g. cl_init, shared, anything in the main dir
 
 	CM.PostInit()
 end
@@ -14,10 +14,10 @@ function CM.PostInit()
 	hook.Call("PostInit") -- Allows you to attach hooks to the event e.g. hook.Add("PostInit", "testing", function)
 end
 
-function CM.includeDir(root,dir)
+function CM.includeDir(root,dir, fileCalled)
 local files = file.Find(root.."/*","LUA")
 	for k,v in pairs(files) do
-		if v == "init.lua" then continue end
+		if v == fileCalled then continue end
 		if string.find(v,"cl_",1,true) then
 			AddCSLuaFile(dir.."/"..v, dir)
 		elseif string.find(v,"sv_",1,true) then
@@ -29,10 +29,10 @@ local files = file.Find(root.."/*","LUA")
 	end
 end
 
-function CM.LoadBaseFiles()
+function CM.LoadBaseFiles(fileCalled)
 local root = "CM/gamemode"
 local _,dirs = file.Find(root.."/*","LUA")
-	CM.includeDir(root,"")
+	CM.includeDir(root,"", fileCalled)
 	for k,v in pairs(dirs) do
 		CM.includeDir(root.."/"..v,v)
 	end 
