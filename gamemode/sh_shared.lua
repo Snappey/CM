@@ -15,3 +15,9 @@ GM.Author		= "Spaggle"
 GM.Email		= ""
 GM.Website		= "www.citymayhem.net"
 GM.TeamBased	= false
+
+
+
+function GM:OnReloaded()
+	CM.LoadBaseFiles("sh_shared.lua")
+end
