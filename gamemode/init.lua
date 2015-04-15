@@ -33,7 +33,7 @@ function CM.LoadBaseFiles(fileCalled)
 local root = "CM/gamemode"
 local _,dirs = file.Find(root.."/*","LUA")
 	CM.includeDir(root,"", fileCalled)
-	for k,v in pairs(dirs) do
+	for k,v in pairs(dirs) do -- Loads all dirs inside the root
 		CM.includeDir(root.."/"..v,v)
 	end 
 end
