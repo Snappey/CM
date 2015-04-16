@@ -12,8 +12,7 @@ end
 
 function CM.LoadAddedModules()
 	for k,v in pairs(CM.Modules) do
-		if k == CM.Modules.Dir then continue end
-		print(CM.Modules.Dir, k, v.entry)
+		if (k == "Dir") then continue end
 		CM.include(CM.Modules.Dir .. "/" .. k .. "/" .. v.entry, "")
 	end
 end

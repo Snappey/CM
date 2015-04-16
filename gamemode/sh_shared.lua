@@ -18,6 +18,6 @@ GM.TeamBased	= false
 
 
 function GM:OnReloaded()
-	CM.Init()
-	MsgC(Color(0,250,0), "Gamemode Reloaded.")
+	--CM.Init()	
+	MsgC(Color(0,250,0), "Gamemode Reloaded. \n")
 end

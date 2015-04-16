@@ -8,8 +8,8 @@ end
 
 function testing.LoadModule()
 	if testing.enabled then
-		CM.includeDir(CM.Modules.Dir .. "/testing/cl", "/testing/cl", "init.lua")
-		CM.includeDir(CM.Modules.Dir .. "/testing/sv", "/testing/sv", "init.lua")
+		CM.includeDir(CM.Modules.Dir .. "/testing/cl", "", "init.lua")
+		CM.includeDir(CM.Modules.Dir .. "/testing/sv", CM.Modules.Dir .. "/testing/sv", "init.lua")
 	end
 end
 

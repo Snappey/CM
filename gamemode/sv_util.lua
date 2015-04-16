@@ -47,3 +47,12 @@ local str = string.lower(str)
 		return ""
 	end
 end)
+
+--[[-----------------------------------------------------------------------------]]
+  --			Random shiz
+--[[-----------------------------------------------------------------------------]]
+
+function openingStuff()
+	MsgC(Color(0,240,0), " \n \n - Gamemode Citymayhem Loading! - \n")
+
+end 
