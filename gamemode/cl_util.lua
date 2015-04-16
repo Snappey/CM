@@ -1,3 +1,4 @@
+
 function draw.OutlinedRect(x, y, w, h, col)
 	surface.SetDrawColor( col )
 	surface.DrawOutlinedRect( x, y, w, h )

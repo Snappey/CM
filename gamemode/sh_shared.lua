@@ -18,6 +18,6 @@ GM.TeamBased	= false
 
 
 function GM:OnReloaded()
-	MsgC(Color(0,250,0), "Gamemode Reloaded.")
 	CM.LoadBaseFiles("sh_shared.lua")
+	MsgC(Color(0,250,0), "Gamemode Reloaded.")
 end
