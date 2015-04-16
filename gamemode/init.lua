@@ -11,6 +11,7 @@ end
 
 function CM.PostInit()
 
+	CM.includeDir("CM/Gamemode/modules", "CM/Gamemode/modules", "init.lua")
 	hook.Call("PostInit") -- Allows you to attach hooks to the event e.g. hook.Add("PostInit", "testing", function)
 end
 
@@ -33,9 +34,10 @@ function CM.LoadBaseFiles(fileCalled)
 local root = "CM/gamemode"
 local _,dirs = file.Find(root.."/*","LUA")
 	CM.includeDir(root,"", fileCalled)
-	for k,v in pairs(dirs) do -- Loads all dirs inside the root
+
+	--[[for k,v in pairs(dirs) do -- Loads all dirs inside the root
 		CM.includeDir(root.."/"..v,v)
-	end 
+	end --]]
 end
 
 function CM.include(str,dir)
