@@ -46,4 +46,10 @@ function CM.include(str,dir)
 	table.insert(CM.LoadedFiles,1,str)
 end
 
+
+function openingStuff()
+	MsgC(Color(0,240,0), " \n \n - Gamemode Citymayhem Loading! - \n")
+
+end 
+
 CM.Init() -- Gamemode is ran as soon as init.lua is ran

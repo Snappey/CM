@@ -7,6 +7,9 @@ function CM.AddModule(name, entrypoint, moduleinfo)
 	if !table.HasValue(table.GetKeys(CM.Modules), name) then 
 		moduleinfo.entry = entrypoint
 		CM.Modules[name] = moduleinfo
+		MsgC(Color(0,250,0), "INFO: ", Color(255,255,255), "Module '" .. name ..  "' added! \n")
+	else
+		MsgC(Color(250,0,0), "ERROR: ", Color(255,255,255),  "Module '" .. name .. "' already added! \n")
 	end
 end
 
@@ -28,6 +31,7 @@ local tbl = {}
 end
 
 CM.AddModule("testing", "init.lua", {})
+CM.AddModule("Rounds", "init.lua", {})
 
 
 CM.LoadAddedModules()
