@@ -40,13 +40,5 @@ function CM.RunModules()
 	end
 end
 
--- Use inside a module to move a table of values to the global table
--- Moves the table to CM.Modules.'Module' Where 'Module' is the name of the module
-function CM.ExportVars(tbl)
-
-	for k,v in pairs(tbl) do
-
-	end
-end
 
 CM.LoadModules()
