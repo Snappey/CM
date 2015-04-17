@@ -3,7 +3,7 @@ local testing = {}
 testing.enabled = true
 
 function testing.Init()
-	testing.LoadModule()
+
 end
 
 function testing.LoadModule()
@@ -12,5 +12,7 @@ function testing.LoadModule()
 		CM.includeDir(CM.Modules.Dir .. "/testing/sv", CM.Modules.Dir .. "/testing/sv", "init.lua")
 	end
 end
+
+CM.AddModule("testing",	testing.LoadModule, {})
 
 testing.Init()
