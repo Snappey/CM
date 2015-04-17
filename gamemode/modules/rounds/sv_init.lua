@@ -14,4 +14,6 @@ function rounds.LoadModule()
 	end
 end
 
+CM.AddModule("Rounds", rounds.LoadModule, {})
+
 rounds.Init()

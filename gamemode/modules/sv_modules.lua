@@ -3,7 +3,7 @@ CM.Modules = {}
 CM.Modules.Dir = "CM/Gamemode/modules"
 
 function CM.AddModule(name, entrypoint, moduleinfo)
-	if type(name) != "string" || type(entrypoint) != "string" || type(moduleinfo) != "table" then return end
+	if type(name) != "string" || type(entrypoint) != "function" || type(moduleinfo) != "table" then return end
 	if !table.HasValue(table.GetKeys(CM.Modules), name) then 
 		moduleinfo.entry = entrypoint
 		CM.Modules[name] = moduleinfo
@@ -13,10 +13,13 @@ function CM.AddModule(name, entrypoint, moduleinfo)
 	end
 end
 
-function CM.LoadAddedModules()
-	for k,v in pairs(CM.Modules) do
-		if (k == "Dir") then continue end
-		CM.include(CM.Modules.Dir .. "/" .. k .. "/" .. v.entry, "")
+function CM.LoadModules()
+	root = CM.Modules.Dir
+	local _,dirs = file.Find(root.."/*","LUA")
+--	CM.includeDir(root,"", fileCalled)
+
+	for k,v in pairs(dirs) do -- Loads all dirs inside the root
+		CM.includeDir(root.."/"..v,root.."/"..v, "sv_modules.lua")
 	end
 end
 
@@ -30,8 +33,20 @@ local tbl = {}
 	return tbl
 end
 
-CM.AddModule("testing", "init.lua", {})
-CM.AddModule("Rounds", "init.lua", {})
+function CM.RunModules()
+	for k,v in pairs(CM.Modules) do
+	if k == "Dir" then continue end	
+		v.entry()
+	end
+end
 
+-- Use inside a module to move a table of values to the global table
+-- Moves the table to CM.Modules.'Module' Where 'Module' is the name of the module
+function CM.ExportVars(tbl)
 
-CM.LoadAddedModules()
+	for k,v in pairs(tbl) do
+
+	end
+end
+
+CM.LoadModules()
