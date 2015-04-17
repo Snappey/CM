@@ -33,6 +33,12 @@ local tbl = {}
 	return tbl
 end
 
+function CM.RunModules()
+	for k,v in pairs(CM.Modules) do
+	if k == "Dir" then continue end	
+		v.entry()
+	end
+end
 
 -- Use inside a module to move a table of values to the global table
 -- Moves the table to CM.Modules.'Module' Where 'Module' is the name of the module
