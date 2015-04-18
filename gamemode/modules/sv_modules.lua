@@ -42,3 +42,5 @@ end
 
 
 CM.LoadModules()
+
+CM.RunModules() -- Remove this to prevent themodules from being included

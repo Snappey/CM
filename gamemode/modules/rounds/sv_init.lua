@@ -2,6 +2,12 @@
 local rounds = {}
 rounds.enabled = true
 
+rounds.length = (60 * 120) -- Seconds * Minutes
+rounds.tickTotal = 12
+rounds.tick = rounds.length / rounds.tickTotal -- Ticks 12 times throughout round
+rounds.ongoing = false
+rounds.timer = "roundsTick"
+
 function rounds.Init()
 
 
@@ -14,6 +20,6 @@ function rounds.LoadModule()
 	end
 end
 
-CM.AddModule("Rounds", rounds.LoadModule, {})
+CM.AddModule("Rounds", rounds.LoadModule, rounds)
 
 rounds.Init()
