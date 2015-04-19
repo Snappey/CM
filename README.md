@@ -42,6 +42,50 @@ sv_init.lua
 
 The entry point is the initial sv_init.lua, while the core is within the sv folder.
 
+There are few crucial functions that are required in order for your module to load correctly
+```lua
+
+local rounds = {}
+rounds.enabled = true
+
+rounds.length = (60 * 120) -- Seconds * Minutes
+rounds.tickTotal = 12
+rounds.tick = rounds.length / rounds.tickTotal -- Ticks 12 times throughout round
+rounds.ongoing = false
+rounds.timer = "roundsTick"
+
+function rounds.Init()
+
+
+end
+
+function rounds.LoadModule()
+	if rounds.enabled then
+		CM.includeDir(CM.Modules.Dir .. "/rounds/cl", "", "init.lua")
+		CM.includeDir(CM.Modules.Dir .. "/rounds/sv", CM.Modules.Dir .. "/rounds/sv", "init.lua")
+	end
+end
+
+CM.AddModule("Rounds", rounds.LoadModule, rounds)
+
+rounds.Init()
+
+```
+
+The function rounds.LoadModule and CM.AddModule are the functions that are critical to the loading of the module.
+
+CM.AddModule takes three arguments (string Module Name, function Function Used to load the module, Table table to export to the CM table)
+```lua
+CM.AddModule("Rounds", rounds.LoadModule, rounds)
+```
+The module can then be manually loaded via lua using the following.
+```lua
+CM.Modules["Rounds"].entry()
+```
+The entry point exported to the CM Table can be accessed using the entry key. This gives us consistency across modules.
+
+rounds.LoadModule uses CM.includeDir to load the rest of the module. includeDir uses flags to include files, where the sv_ flag includes file on the serverside, sh_ on the shared state and cl_ on the clientside.
+
 ## Round System
 
 ### Summary
