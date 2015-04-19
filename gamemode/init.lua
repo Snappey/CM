@@ -38,7 +38,7 @@ local _,dirs = file.Find(root.."/*","LUA")
 	--[[for k,v in pairs(dirs) do -- Loads all dirs inside the root
 		CM.includeDir(root.."/"..v,v)
 	end --]]
-end
+end	
 
 function CM.include(str,dir)
 	include(str)
