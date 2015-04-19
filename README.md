@@ -21,6 +21,27 @@ end)
 
 # Modules
 
+The module system allows us to easily manage features in the gamemode, each module is deisgned to work independently from each other keeping things organised.
+
+Modules can be organised in anyway you feel. However they all have to feature an entry point which loads the rest of the module. Most modules are made of two core components which include: Entry point and Core.
+
+Entry point: this is where the file is loaded and registered into the system, features any configuration options. It also needs to feature a function that loads the core functionallity of the module.
+
+Core: This features the actual module functionallity. For example creating the timer for the round system.
+
+By breaking the module down into these compoments it allows us to load modules we require and disable ones we dont. Modules can then be loaded on the fly when required. Allowing modules to be hotloaded in, while the server is running.
+
+### Example
+
+The Round system has the following file structure:
+
+```
+/sv/sv_init.lua
+sv_init.lua
+```
+
+The entry point is the initial sv_init.lua, while the core is within the sv folder.
+
 ## Round System
 
 ### Summary
