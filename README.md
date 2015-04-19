@@ -75,3 +75,32 @@ Output: Time left: 598
 No arguments, returns time left
 
 ### Hooks
+
+#### Round Tick
+
+Round Tick is called after each tick in a round. After a repetition of the tick timer.
+
+```lua
+
+TotalTick = 0
+hook.Add("RoundTick", "AddPoints", function()
+  TotalTick = TotalTick + 1
+end)
+
+```
+No arguments, returns no values
+
+
+#### Round Finished
+
+Round Finished is called after the round has finished and the main timer has been completed
+
+```lua
+
+hook.Add("RoundFinished", "Finished", function()
+  print("Round has finished!")
+end)
+
+```
+
+In order to start the round again you have to call round.StartRound() again. This cannot be called in Round Finished hook, round.Stop is called immediately after this hook.
