@@ -10,4 +10,4 @@ function Main.LoadModule()
 	end
 end
 
-CM.AddModule("Main", Main.LoadModule, Main)
+CM.AddModule("Main", Main.LoadModule, Main) 
