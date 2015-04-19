@@ -3,7 +3,7 @@ CM.Modules = {}
 CM.Modules.Dir = "CM/Gamemode/modules"
 
 function CM.AddModule(name, entrypoint, moduleinfo)
-	if type(name) != "string" || type(entrypoint) != "function" || type(moduleinfo) != "table" then return end
+	if type(name) != "string" or type(entrypoint) != "function" or type(moduleinfo) != "table" then return end
 	if !table.HasValue(table.GetKeys(CM.Modules), name) then 
 		moduleinfo.entry = entrypoint
 		CM.Modules[name] = moduleinfo
@@ -40,13 +40,7 @@ function CM.RunModules()
 	end
 end
 
--- Use inside a module to move a table of values to the global table
--- Moves the table to CM.Modules.'Module' Where 'Module' is the name of the module
-function CM.ExportVars(tbl)
-
-	for k,v in pairs(tbl) do
-
-	end
-end
 
 CM.LoadModules()
+
+CM.RunModules() -- Remove this to prevent themodules from being included
