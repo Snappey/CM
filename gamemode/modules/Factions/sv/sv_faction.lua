@@ -7,6 +7,7 @@ function faction.Create(name)
 	setmetatable(fctn, faction)
 	fctn.name = name
 	fctn.loadout = {}
+	fctn.attributes = function() end
 	fctn.colour = Color(0,0,0)
 	faction.id = faction.id + 1; fctn.id = faction.id
 	return fctn
