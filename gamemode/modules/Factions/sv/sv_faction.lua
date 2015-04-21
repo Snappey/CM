@@ -7,19 +7,20 @@ function faction.Create(name)
 	setmetatable(fctn, faction)
 	fctn.name = name
 	fctn.loadout = {}
+	fctn.attributes = function() end
 	fctn.colour = Color(0,0,0)
 	faction.id = faction.id + 1; fctn.id = faction.id
 	return fctn
 end
 
-function faction.SetLoadout(tbl)
+function faction:SetLoadout(tbl)	
 	self.loadout = tbl
 end
 
-function faction.AddWeapon(wep)
+function faction:AddWeapon(wep)
 	table.insert(self.loadout, 1, wep)
 end
 
-function faction.SetColour(r,g,b)
-	self.colour = Color(r,g,b)
+function faction:SetColour(r,g,b)
+	faction.colour = Color(r,g,b)
 end

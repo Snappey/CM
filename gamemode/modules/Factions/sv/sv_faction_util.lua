@@ -19,7 +19,7 @@ function ply:SetFaction(faction)
 end
 
 function ply:GetFaction()
-	return ply.Faction
+	return ply.Faction or 0
 end
 
 function ply.GetFactionName()
@@ -32,6 +32,6 @@ end
 
 concommand.Add("SetFaction", function(ply, cmd, args) -- Debug shiz
 	if IsValid(ply) then
-		ply:SetFaction(2)
+		ply:SetFaction(1)
 	end
 end)

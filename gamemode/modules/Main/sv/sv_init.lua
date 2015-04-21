@@ -8,13 +8,18 @@ function Main.Init()
 end
 
 function Main.SetupFactions()
-	Main.Factions["City Rebels"] = faction.Create("City Rebels")
-	Main.Factions["Mafia"] = faction.Create("Mafia")
-	Main.Factions["Government"] = faction.Create("Government")
+	Main.CreateFactions()
+
+	Main.FactionLoadout()
 end
+
 
 hook.Add("PostInit", "KickStartGamemode", function() -- Start the main module once core has finished loading
 	Main.Init()
+end)
+
+concommand.Add("ForceLoadout", function(ply,cmd,args)
+	Main.Loadout(ply)
 end)
 
 CM.Modules["Main"] = Main

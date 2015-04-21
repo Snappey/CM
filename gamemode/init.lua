@@ -4,6 +4,7 @@ CM.LoadedFiles = {}
 
 function CM.Init()
 	hook.Call("PreInit") -- Called before the gamemode starts loading
+	DeriveGamemode( "sandbox" )
 	openingStuff()
 	CM.LoadBaseFiles("init.lua") -- Load base files, e.g. cl_init, shared, anything in the main dir
 	CM.PostInit()
