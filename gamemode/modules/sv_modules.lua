@@ -44,6 +44,7 @@ CM.loadOrder = {}
 function CM.SortModules()
 	for k,v in pairs(CM.Modules) do
 		if type(v) != "table" then continue end
+		if v.priority == nil then v.priority = 10 end
 		table.insert(CM.loadOrder, v.priority, v.entry)
 	end	
 end
