@@ -14,12 +14,10 @@ function Main.SetupFactions()
 end
 
 
-hook.Add("PostInit", "KickStartGamemode", function() -- Start the main module once core has finished loading
-	Main.Init()
-end)
-
 concommand.Add("ForceLoadout", function(ply,cmd,args)
 	Main.Loadout(ply)
 end)
+
+Main.Init()
 
 CM.Modules["Main"] = Main
