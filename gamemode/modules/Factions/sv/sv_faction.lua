@@ -24,3 +24,20 @@ end
 function faction:SetColour(r,g,b)
 	faction.colour = Color(r,g,b)
 end
+
+
+--[[ Score Functions ]]--
+
+function faction:AddScore(val)
+	if type(val) != "number" then return end
+	self.score = self.score + val
+end
+
+function faction:SetScore(val)
+	if type(val) != "number" then return end
+	self.score = val
+end
+
+function faction:GetScore()
+	return self.score
+end

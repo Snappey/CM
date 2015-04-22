@@ -30,8 +30,16 @@ function ply.GetFactionName()
 	end
 end
 
+function Factions.GetFaction(str)
+	for k,v in pairs(CM.Modules["Main"].Factions) do
+		if string.lower(k) == string.lower(str) || v.id == str then
+			return v
+		end
+	end
+end
+
 concommand.Add("SetFaction", function(ply, cmd, args) -- Debug shiz
 	if IsValid(ply) then
-		ply:SetFaction(1)
+		ply:SetFaction(args)
 	end
 end)

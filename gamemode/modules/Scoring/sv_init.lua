@@ -1,7 +1,7 @@
 
 local scoring = {}
+scoring.position = {}
 scoring.enabled = true
-scoring.score = {}
 scoring.priority = 3
 
 function scoring.LoadModule()
