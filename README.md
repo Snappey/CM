@@ -30,7 +30,7 @@ Entry point: this is where the file is loaded and registered into the system, fe
 Core: This features the actual module functionallity. For example creating the timer for the round system.
 
 By breaking the module down into these compoments it allows us to load modules we require and disable ones we dont. Modules can then be loaded on the fly when required. Allowing modules to be hotloaded in, while the server is running.
-
+ 
 ### Example
 
 The Round system has the following file structure:
