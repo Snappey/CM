@@ -4,7 +4,7 @@ Main.Factions = {}
 
 function Main.Init()
 	Main.SetupFactions()
-
+	
 end
 
 function Main.SetupFactions()
