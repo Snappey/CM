@@ -51,3 +51,19 @@ end)
 --[[-----------------------------------------------------------------------------]]
   --			Random shiz
 --[[-----------------------------------------------------------------------------]]
+
+function string.Contains(str,needle)
+	if type(needle) == "table" then
+		for i=1,#needle do
+			if string.find(str,needle[i] ,1,false) then
+				return true 
+			end
+		end
+		return false
+	elseif type(needle) == "string" then
+		if string.find(str,needle,1,false) then
+			return true
+		end
+		return false
+	end
+end
