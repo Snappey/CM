@@ -4,7 +4,6 @@ CM.LoadedFiles = {}
 
 function CM.Init()
 	hook.Call("PreInit") -- Called before the gamemode starts loading
-	DeriveGamemode( "sandbox" )
 	openingStuff()
 	CM.LoadBaseFiles("init.lua") -- Load base files, e.g. cl_init, shared, anything in the main dir
 	CM.PostInit()
@@ -18,15 +17,16 @@ end
 
 function CM.includeDir(root,dir, fileCalled)
 local files = file.Find(root.."/*","LUA")
+root = root.. "/"
 	for k,v in pairs(files) do
 		if v == fileCalled then continue end
 		if string.find(v,"cl_",1,true) then
-			AddCSLuaFile(dir.."/"..v, dir)
+			CM.AddCSLuaFile(root..v) -- dir.."/".. hold that just in case
 		elseif string.find(v,"sv_",1,true) then
 			CM.include(dir.."/"..v, dir)
 		elseif string.find(v,"sh_",1,true) then
 			CM.include(dir.."/"..v, dir)
-			AddCSLuaFile(dir.."/"..v)
+			CM.AddCSLuaFile(root..v)
 		end
 	end
 end
@@ -36,10 +36,15 @@ local root = "CM/gamemode"
 local _,dirs = file.Find(root.."/*","LUA")
 	CM.includeDir(root,"", fileCalled)
 
-	--[[for k,v in pairs(dirs) do -- Loads all dirs inside the root
+	for k,v in pairs(dirs) do -- Loads all dirs inside the root
 		CM.includeDir(root.."/"..v,v)
-	end --]]
+	end
 end	
+
+function CM.AddCSLuaFile(str)
+	AddCSLuaFile(str)
+	MsgC(Color(250,250,250), "File: ", Color(250,250,0), str, Color(250,250,250), " Included \n")
+end
 
 function CM.include(str,dir)
 	include(str)

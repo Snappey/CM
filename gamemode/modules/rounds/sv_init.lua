@@ -7,11 +7,7 @@ rounds.tickTotal = 12
 rounds.tick = rounds.length / rounds.tickTotal -- Ticks 12 times throughout round
 rounds.ongoing = false
 rounds.timer = "roundsTick"
-
-function rounds.Init()
-
-
-end
+rounds.priority = 1
 
 function rounds.LoadModule()
 	if rounds.enabled then
@@ -21,5 +17,3 @@ function rounds.LoadModule()
 end
 
 CM.AddModule("Rounds", rounds.LoadModule, rounds)
-
-rounds.Init()

@@ -9,7 +9,7 @@ end
 
 function Factions.FactionLoadout()
 	Factions.Factions["City Rebels"]:SetLoadout( {"weapon_crowbar"} )
-
+	
 	Factions.Factions["Mafia"]:SetLoadout( {"weapon_crowbar"} )
 
 	Factions.Factions["Government"]:SetLoadout( {"weapon_crowbar"} )

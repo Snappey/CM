@@ -1,5 +1,6 @@
 local factions = {}
 factions.enabled = true
+factions.priority = 1
 
 function factions.LoadModule()
 	if factions.enabled then

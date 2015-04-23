@@ -1,6 +1,7 @@
 
 local Main = {}
 Main.enabled = true
+Main.priority = 2
 
 
 function Main.LoadModule()

@@ -4,8 +4,9 @@ CM.Modules.Dir = "CM/Gamemode/modules"
 
 function CM.AddModule(name, entrypoint, moduleinfo)
 	if type(name) != "string" or type(entrypoint) != "function" or type(moduleinfo) != "table" then return end
-	if !table.HasValue(table.GetKeys(CM.Modules), name) then 
+	if !table.HasValue(table.GetKeys(CM.Modules), name) then
 		moduleinfo.entry = entrypoint
+		moduleinfo.name = name
 		CM.Modules[name] = moduleinfo
 		MsgC(Color(0,250,0), "INFO: ", Color(255,255,255), "Module '" .. name ..  "' added! \n")
 	else
@@ -34,13 +35,22 @@ local tbl = {}
 end
 
 function CM.RunModules()
-	for k,v in pairs(CM.Modules) do
-	if k == "Dir" then continue end	
-		v.entry()
+	for k,v in ipairs(CM.loadOrder) do
+		v()
 	end
 end
 
+CM.loadOrder = {}
+function CM.SortModules()
+	for k,v in pairs(CM.Modules) do
+		if type(v) != "table" then continue end
+		if v.priority == nil then v.priority = 10 end
+		table.insert(CM.loadOrder, v.priority, v.entry)
+	end	
+end
 
 CM.LoadModules()
+
+CM.SortModules()
 
 CM.RunModules() -- Remove this to prevent themodules from being included
