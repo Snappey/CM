@@ -18,7 +18,6 @@ function CM.LoadModules()
 	root = CM.Modules.Dir
 	local _,dirs = file.Find(root.."/*","LUA")
 --	CM.includeDir(root,"", fileCalled)
-
 	for k,v in pairs(dirs) do -- Loads all dirs inside the root
 		CM.includeDir(root.."/"..v,root.."/"..v, "sv_modules.lua")
 	end

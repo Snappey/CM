@@ -2,6 +2,8 @@ local factions = {}
 factions.enabled = true
 factions.priority = 1
 
+-- TODO: Add a client layer for HUD etc.
+
 function factions.LoadModule()
 	if factions.enabled then
 		CM.includeDir(CM.Modules.Dir .. "/factions/cl", "", "init.lua")
