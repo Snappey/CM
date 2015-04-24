@@ -4,7 +4,7 @@ Main.Factions = {}
 
 function Main.Init()
 	Main.SetupFactions()
-	
+	--Main.ConnecToDB()
 end
 
 function Main.SetupFactions()
@@ -18,6 +18,8 @@ concommand.Add("ForceLoadout", function(ply,cmd,args)
 	Main.Loadout(ply)
 end)
 
-Main.Init()
+hook.Add("PostInit", "AfterEverythingHasLoaded", function()
+	Main.Init()
+end)
 
 CM.Modules["Main"] = Main
