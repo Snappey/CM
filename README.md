@@ -22,7 +22,7 @@ end)
 # Modules
 
 The module system allows us to easily manage features in the gamemode, each module is deisgned to work independently from each other keeping things organised.
-
+ 
 Modules can be organised in anyway you feel. However they all have to feature an entry point which loads the rest of the module. Most modules are made of two core components which include: Entry point and Core.
 
 Entry point: this is where the file is loaded and registered into the system, features any configuration options. It also needs to feature a function that loads the core functionallity of the module.
