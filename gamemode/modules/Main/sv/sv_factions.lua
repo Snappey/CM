@@ -17,7 +17,7 @@ end
 
 function Factions.Loadout(ply)
 	if ply:GetFaction() == 0 then MsgC(Color(255,255,255),"INFO: ", Color(0,255,0), "Attempted to give player loadout, no assigned faction!\n") return end
-	for k,v in pairs(Main.Factions[ply:GetFactionName()].loadout) do
+	for k,v in pairs(Factions.Factions[ply:GetFactionName()].loadout) do
 		ply:Give(v)
 	end
 end

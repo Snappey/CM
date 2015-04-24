@@ -19,7 +19,7 @@ function CM.includeDir(root,dir, fileCalled)
 local files = file.Find(root.."/*","LUA")
 root = root.. "/"
 	for k,v in pairs(files) do
-		if v == fileCalled then continue end
+		if v == fileCalled || v == table.HasValue(CM.LoadedFiles, root..v) then continue end
 		if string.find(v,"cl_",1,true) then
 			CM.AddCSLuaFile(root..v) -- dir.."/".. hold that just in case
 		elseif string.find(v,"sv_",1,true) then
@@ -36,9 +36,9 @@ local root = "CM/gamemode"
 local _,dirs = file.Find(root.."/*","LUA")
 	CM.includeDir(root,"", fileCalled)
 
-	for k,v in pairs(dirs) do -- Loads all dirs inside the root
+--[[	for k,v in pairs(dirs) do -- Loads all dirs inside the root
 		CM.includeDir(root.."/"..v,v)
-	end
+	end --]]
 end	
 
 function CM.AddCSLuaFile(str)
