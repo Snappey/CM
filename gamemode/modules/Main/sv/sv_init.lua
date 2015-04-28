@@ -4,7 +4,7 @@ Main.Factions = {}
 
 function Main.Init()
 	Main.SetupFactions()
-	--Main.ConnecToDB()
+	Main.ConnectToDB()
 end
 
 function Main.SetupFactions()
