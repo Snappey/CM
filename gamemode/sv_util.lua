@@ -67,3 +67,9 @@ function string.Contains(str,needle)
 		return false
 	end
 end
+
+chat = {}
+
+function chat.AddText(...)
+
+end

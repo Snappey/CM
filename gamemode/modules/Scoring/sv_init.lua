@@ -2,12 +2,13 @@
 local scoring = {}
 scoring.position = {}
 scoring.enabled = true
-scoring.priority = 3
+scoring.priority = 4
 
 -- TODO: Add client layer for huds, implement into the main module
 
 function scoring.LoadModule()
 	if scoring.enabled then
+		print("OLO")
 		CM.includeDir(CM.Modules.Dir .. "/Scoring/cl", "", "init.lua")
 		CM.includeDir(CM.Modules.Dir .. "/Scoring/sv", CM.Modules.Dir .. "/Scoring/sv", "init.lua")
 	end

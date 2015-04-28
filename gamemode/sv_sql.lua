@@ -38,9 +38,7 @@ local PrintTable = PrintTable;
 local SortedPairs = SortedPairs;
 local error, ErrorNoHalt = error, ErrorNoHalt;
 local print = print;
-
-
-module( "pMySQL", package.seeall )
+	
 
 version = 2;
 
@@ -48,7 +46,7 @@ local database_mt = {};
 database_mt.__index = database_mt;
 
 function database_mt:Init( host, user, pass, dbname, port )
-	print("ATTEMPTING DB CONNECTION!");
+	MsgC(Color(255,255,255),"INFO: ", Color(0,255,0), "Connecting to database! \n")
 	self.queue = {};
 
 
@@ -66,13 +64,9 @@ function database_mt:Init( host, user, pass, dbname, port )
 	self.db = db;
 
 	function db.onConnected( dbself )
-		print( "[pMySQL] Successfully Connected to DB:" )
-		print( "   ", self.host..':'..self.port );
-		print( "   ", self.user );
-		print( "   ", self.pass );
-		print( "   ", self.dbname );
+		MsgC(Color(255,255,255),"SQL: ", Color(0,255,0), "Successfully connected to the database! \n")
 
-		print("EXECUTING ".. table.Count( self.queue ).." QUEUED QUERIES.");
+		MsgC(Color(255,255,255), "INFO: ", Color(0,255,0), " EXECUTING " .. table.Count(self.queue) .. " QUEUED QUERIES!")
 		for k,v in SortedPairs( self.queue )do
 			v:_Execute( ); 
 		end
@@ -81,16 +75,11 @@ function database_mt:Init( host, user, pass, dbname, port )
 
 	function db.onConnectionFailed( dbself, err )
 		pself.status = CONNECTION_FAILED;
-		print( "[pMySQL] FAILED TO CONNECT TO DATABASE:" )
-		print( "   ", self.host..':'..self.port );
-		print( "   ", self.user );
-		print( "   ", self.pass );
-		print( "   ", self.dbname );
+			MsgC(Color(255,0,0),"SQL: ", Color(0,255,0), "Failed connected to the database! \n")
 		print( "Error:", err )
 	end
 
 	db:connect( );
-
 	return self;
 end
 
@@ -158,11 +147,6 @@ end
 function newDB( )
 	return setmetatable( {}, database_mt );
 end
-
-
-
-
-
 
 
 --

@@ -4,11 +4,6 @@ local ply = FindMetaTable("Player")
 
 util.AddNetworkString("GiveMoneyRequest")
 
-function money.OnPlayerSpawn(ply)
-	ply.money = 0 -- In the future will query a database, maybe move it to connecting hook?
-end
-hook.Add("PlayerInitialSpawn", "MoneyOnPlayerSpawn", money.OnPlayerSpawn)
-
 function ply:AddMoney(val)
 	if val < 0 then return ErrorNoHalt("AddMoney only takes positive values!") end
 	self.money = self.money + val

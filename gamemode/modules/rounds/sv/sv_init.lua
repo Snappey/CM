@@ -7,6 +7,8 @@ function round.StartRound()
 	print(round.timer, round.tick, round.tickTotal, round.length)
 	timer.Create(round.timer, round.tick, round.tickTotal, round.Tick)
 	timer.Create("RoundFinished", round.length, 0, round.Finished)
+
+	round.ongoing = true
 end
 
 function round.Tick()
@@ -25,6 +27,7 @@ function round.Stop()
 		timer.Remove("RoundFinished")
 	end	
 	MsgC("INFO: ",Color(0,255,0), " Timers destroyed, round finished! \n")
+	round.ongoing = false
 end
 
 function round.GetTotalTimeLeft()
