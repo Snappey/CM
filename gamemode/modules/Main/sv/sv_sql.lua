@@ -8,11 +8,11 @@ function Main.ConnectToDB()
 end
 
 function Main.Query(str, callback)
-	if callback == nil then callback = CALLBACK_PRINTTABLE end
+	if callback == nil then callback = CALLBACK_PRINTTABLE end --debug stuff
 	Main.q = newQuery()
 	Main.q:SetDB(Main.DB)
 	Main.q:SetString(str)
-	Main.q:SetCallback(callback) --debug stuff
+	Main.q:SetCallback(callback) 
 	Main.q:Run()
 end
 
@@ -40,9 +40,29 @@ end
 
 function Main.SavePlayerDetails(ply)
 	local function callback(data)
-		MsgC(Color(255,255,255), "INFO: ", Color(0,255,0), ply:Nick() .. ", Saved details to database!")
+		MsgC(Color(255,255,255), "INFO: ", Color(0,255,0), ply:Nick() .. ", Saved details to database! \n")
 	end	
 	Main.Query("UPDATE cm_users SET money="..ply.money.." WHERE ".. ply:SteamID64() .." = sid", callback)
 end
+
+function Main.BackupData(tbl) -- Takes a table of players or does everyone
+	hook.Call("BackingUp")
+	if tbl == nil then tbl = player.GetAll() end
+	for k,v in pairs(tbl) do
+		Main.SavePlayerDetails(v)
+	end
+	hook.Call("BackedUp")
+end
+
+hook.Add("BackingUp", "NotifyingPlayersOfPossibleLag", function()
+	PrintMessage(HUD_PRINTTALK, "Backing up your data! Prepare for possible lag!")
+end)
+
+hook.Add("BackedUp", "LagsGone", function()
+	PrintMessage(HUD_PRINTTALK, "Backed up your data! Problem solved!")
+end)
+
+
+timer.Create("CMBackupPlayerData", 600, 0, Main.BackupData)
 
 CM.Modules["Main"] = Main
