@@ -5,6 +5,7 @@ Main.Factions = {}
 function Main.Init()
 	Main.SetupFactions()
 	Main.ConnectToDB()
+	timer.Create("CMWaitingForRound", 20, 0, Main.Start) -- This wont start till a bot or player joins
 end
 
 function Main.SetupFactions()

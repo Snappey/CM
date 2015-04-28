@@ -2,9 +2,9 @@
 local Main = {}
 Main.enabled = true
 Main.priority = 2
+Main.override = false -- Debug stuff
 
--- TODO: Link more modules together, this module sets the entire gamemode up e.g. implement the round system
--- Think about how many players are needed to start a round
+-- For the game to start at least 3 people need to be included, however they are free to roam but a round will not start till 3 people join
 
 function Main.LoadModule()
 	if Main.enabled then
