@@ -221,10 +221,16 @@ function _R.Panel:Paint3D2D()
 	-- Draw it manually
 	self:SetPaintedManually( false )
 		self:PaintManual()
+
+
+	surface.DrawLine(gui.MouseX(), gui.MouseY() - 5 , gui.MouseX(), gui.MouseY() + 5)
+		surface.DrawLine(gui.MouseX() - 5, gui.MouseY() , gui.MouseX() + 5, gui.MouseY())
+
 	self:SetPaintedManually( true )
 
 	gui.MouseX = oldMouseX
 	gui.MouseY = oldMouseY
+
 end
 
 function vgui.End3D2D()
