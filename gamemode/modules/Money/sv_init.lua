@@ -1,7 +1,7 @@
 
 local money = {}
 money.enabled = true
-money.priority = 3
+money.priority = 4
 
 -- TODO: Save players money
 
