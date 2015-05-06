@@ -59,7 +59,7 @@ net.Receive("CMOnPlayerSpawn", function()
 	--	Drawing
 
 	hook.Add( "PostDrawOpaqueRenderables", "DrawSample3D2DFrame2", function()	
-		vgui.Start3D2D( origin, Angle( 0, 180, 90 ), 1 )
+		vgui.Start3D2D( origin, Angle( 0, 180, 90 ), 0.25 )
 			frame:Paint3D2D()
 			
 			for _, frame in ipairs( frames ) do
