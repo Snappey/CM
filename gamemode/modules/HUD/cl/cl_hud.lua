@@ -3,6 +3,7 @@ CM.hud = {}
 CM.hud.hide ={
 	CHudHealth = true,
 	CHudBattery = true,
+	CHudCrosshair = true
 }
 
 hook.Add( "HUDShouldDraw", "HideHUD", function( name )

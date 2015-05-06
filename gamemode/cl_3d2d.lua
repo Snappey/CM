@@ -35,16 +35,18 @@ local function planeLineIntersect( lineStart, lineEnd, planeNormal, planePoint )
 end
 
 local function getCursorPos()
-	local p = planeLineIntersect( LocalPlayer():EyePos(), LocalPlayer():EyePos() + LocalPlayer():GetAimVector() * 16000, normal, origin )
+	local p = planeLineIntersect( LocalPlayer():EyePos(), LocalPlayer():EyePos() + LocalPlayer():GetAimVector() * 250 , normal, origin )
+	--local p = util.IntersectRayWithPlane(LocalPlayer():EyePos(), LocalPlayer():GetAimVector(), origin, normal)
+	--print(p)
 	local offset = origin - p
-	
+
 	local angle2 = angle:Angle()
 	angle2:RotateAroundAxis( normal, 90 )
 	angle2 = angle2:Forward()
 	
 	local x = Vector( offset.x * angle.x, offset.y * angle.y, offset.z * angle.z ):Length()
 	local y = Vector( offset.x * angle2.x, offset.y * angle2.y, offset.z * angle2.z ):Length()
-	
+
 	return x, y
 end
 
@@ -127,7 +129,7 @@ end
 -- Mouse input
 
 hook.Add( "KeyPress", "VGUI3D2DMousePress", function( _, key )
-	if ( key == IN_USE ) then
+	if ( key == IN_USE ) || (input.IsMouseDown(MOUSE_LEFT)) then
 		for pnl in pairs( inputWindows ) do
 			if ( pnl:IsValid() ) then
 				origin = pnl.Origin
@@ -142,7 +144,7 @@ hook.Add( "KeyPress", "VGUI3D2DMousePress", function( _, key )
 end )
 
 hook.Add( "KeyRelease", "VGUI3D2DMouseRelease", function( _, key )
-	if ( key == IN_USE ) then
+	if ( key == IN_USE ) || !(input.IsMouseDown(MOUSE_LEFT)) then
 		for pnl in pairs( inputWindows ) do
 			if ( pnl:IsValid() ) then
 				origin = pnl.Origin
@@ -217,13 +219,14 @@ function _R.Panel:Paint3D2D()
 	self.Scale = scale
 	self.Angle = angle
 	self.Normal = normal
+
 	
 	-- Draw it manually
 	self:SetPaintedManually( false )
 		self:PaintManual()
 
-
-	surface.DrawLine(gui.MouseX(), gui.MouseY() - 5 , gui.MouseX(), gui.MouseY() + 5)
+		surface.SetDrawColor(245,245,245)
+		surface.DrawLine(gui.MouseX(), gui.MouseY() - 5 , gui.MouseX(), gui.MouseY() + 5)
 		surface.DrawLine(gui.MouseX() - 5, gui.MouseY() , gui.MouseX() + 5, gui.MouseY())
 
 	self:SetPaintedManually( true )
