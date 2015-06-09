@@ -53,7 +53,7 @@ function CM.include(str,dir)
 end
 
 
-function openingStuff()
+local function openingStuff()
 	MsgC(Color(0,240,0), " \n \n - Gamemode Citymayhem Loading! - \n")
 
 end 
