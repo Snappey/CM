@@ -8,7 +8,6 @@ scoring.priority = 4
 
 function scoring.LoadModule()
 	if scoring.enabled then
-		print("OLO")
 		CM.includeDir(CM.Modules.Dir .. "/Scoring/cl", "", "init.lua")
 		CM.includeDir(CM.Modules.Dir .. "/Scoring/sv", CM.Modules.Dir .. "/Scoring/sv", "init.lua")
 	end

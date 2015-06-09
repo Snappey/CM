@@ -1,5 +1,6 @@
 
 CM.Money = {}
+
 local ply = LocalPlayer()
 
 function ply:GetMoney()
