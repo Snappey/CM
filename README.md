@@ -86,6 +86,14 @@ The entry point exported to the CM Table can be accessed using the entry key. Th
 
 rounds.LoadModule uses CM.includeDir to load the rest of the module. includeDir uses flags to include files, where the sv_ flag includes file on the serverside, sh_ on the shared state and cl_ on the clientside.
 
+## Main
+
+### Summary
+
+### Functions
+
+### Hooks
+
 ## Round System
 
 ### Summary
@@ -169,3 +177,28 @@ end)
 ```
 
 In order to start the round again you have to call round.StartRound() again. This cannot be called in Round Finished hook, round.Stop is called immediately after this hook.
+
+## Scoring
+
+### Summary
+
+### Functions
+
+### Hooks
+
+## Factions
+
+### Summary
+
+### Functions
+
+### Hooks
+
+## Money
+
+### Summary
+
+###  Functions
+
+### Hooks
+
