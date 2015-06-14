@@ -225,9 +225,9 @@ function _R.Panel:Paint3D2D()
 	self:SetPaintedManually( false )
 		self:PaintManual()
 
-		surface.SetDrawColor(245,245,245)
-		surface.DrawLine(gui.MouseX(), gui.MouseY() - 5 , gui.MouseX(), gui.MouseY() + 5)
-		surface.DrawLine(gui.MouseX() - 5, gui.MouseY() , gui.MouseX() + 5, gui.MouseY())
+		--surface.SetDrawColor(245,245,245)
+		--surface.DrawLine(gui.MouseX(), gui.MouseY() - 5 , gui.MouseX(), gui.MouseY() + 5)
+		--surface.DrawLine(gui.MouseX() - 5, gui.MouseY() , gui.MouseX() + 5, gui.MouseY())
 
 	self:SetPaintedManually( true )
 
